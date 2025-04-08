@@ -9,6 +9,7 @@
 - **Versiunea secvențială** - cea mai simplă implementare
 - **OpenMP** - paralelizare pe CPU
 - **CUDA** - paralelizare pe GPU
+  
 Scopul este să comparăm performanța acestor abordări și să înțelegem cum paralelizarea poate îmbunătăți timpii de execuție.
 
 ## 🔧 Cum funcționează?

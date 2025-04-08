@@ -1,6 +1,6 @@
 # QR Code Generator - Proiect (Secvential vs. OpenMP vs. CUDA)
 
-> 📘 Proiect realizat în cadrul cursului **Programare Paralelă**  
+> 📘 Proiect realizat în cadrul cursului de **Programare Paralelă**  
 > Universitatea Transilvania din Brașov
 
 ## 📌 Descriere Proiect

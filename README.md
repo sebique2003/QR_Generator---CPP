@@ -63,6 +63,7 @@ Asigură-te că ai:
 - Un compilator C++ (ex: g++)
 - Suport pentru OpenMP (opțional, pentru paralelizare pe CPU)
 - CUDA Toolkit instalat (opțional, pentru paralelizare pe GPU)
+  
 Apoi compilează:
 ```bash
 make all

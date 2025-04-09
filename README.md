@@ -23,7 +23,7 @@ Scopul este să comparăm performanța acestor abordări și să înțelegem cum
 - Am împărțit procesarea pe axa Y a imaginii
 - Fiecare thread primește un set de linii de procesat:
 ```cpp
-#pragma omp parallel for schedule(static)
+#pragma omp parallel for schedule(dynamic)
 for (int y = 0; y < size; y++) {
     // Procesează linia y
 }

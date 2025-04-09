@@ -50,6 +50,30 @@ for (int y = 0; y < size; y++) {
 - Folosim blocuri de 32x32 thread-uri (BLOCK_SIZE)
 - Grid-ul este dimensionat să acopere întreaga matrice QR
 
+## 🧪 Test Performanță
+
+### Test realizat pe un sistem cu:
+- CPU: Intel Core i5-9300H (4 nuclee, până la 4.1 GHz)
+- GPU: NVIDIA GeForce GTX 1650 4GB GDDR5
+
+### Timpi de execuție pentru generarea unui QR (din textul "Lorem Ipsum"):
+
+| Metodă         | Timp de execuție |
+| -------------  | ---------------- |
+| **Secvențial** | 2.008 secunde    |
+| **OpenMP**     | 1.991 secunde    |
+| **CUDA**       | 2.107 secunde    |
+
+### Observații:
+- **Secvențial**: Timpul de execuție este de aproximativ 2 secunde.
+- **OpenMP**: Timpul de execuție este de aproximativ 1.99 secunde, ceea ce arată o ușoară îmbunătățire față de varianta secvențială. Deși nu este o diferență mare, OpenMP permite procesarea paralelă pe CPU.
+- **CUDA**: Timpul de execuție este de aproximativ 2.1 secunde, ceea ce este similar cu varianta secvențială. Deși CUDA oferă avantaje mari la dimensiuni mari de date, overhead-ul inițial al transferului datelor între CPU și GPU poate afecta performanța pentru dimensiuni mai mici ale QR-urilor.
+
+### Concluzie:
+- **OpenMP** este cel mai eficient pentru dimensiuni mici ale QR-urilor, cu timpi de execuție apropiati de varianta secvențială, dar cu o paralelizare eficientă pe CPU.
+- **CUDA** poate deveni mai eficient pe măsură ce dimensiunile cresc, dar pentru QR-uri mici nu oferă o îmbunătățire semnificativă comparativ cu OpenMP.
+
+
 ## 🛠 Cum să rulezi?
 
 ### 1. Clonează repository-ul

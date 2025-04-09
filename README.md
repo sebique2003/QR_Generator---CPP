@@ -100,9 +100,9 @@ make all
 
 ### 4. La Rulare
 
-Introdu sursa textului: manual sau din fișier.
+Introdu sursa textului, manual sau din fișier.
 
-Alege metoda de generare:
+Apoi alege metoda de generare:
 1. Secvențial
 2. OpenMP
 3. CUDA

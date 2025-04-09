@@ -10,6 +10,20 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\core\Header.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="libs\qrcodegen\qrcodegen.cpp" />
+    <ClCompile Include="src\core\main.cpp" />
+    <ClCompile Include="src\core\stb_connection.cpp" />
+    <ClCompile Include="src\methods\openmp.cpp" />
+    <ClCompile Include="src\methods\secvential.cpp" />
+    <ClCompile Include="src\util\compare.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="src\methods\cuda.cu" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CDF12AAD-606B-400C-AD1A-A48C0CA17059}</ProjectGuid>
     <RootNamespace>QR_Generator</RootNamespace>
@@ -47,7 +61,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>A:\Facultate\PP\Proiect\QR_Generator\libs\qrcodegen;A:\Facultate\PP\Proiect\QR_Generator\libs\stb;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\src\core;$(ProjectDir)\libs\qrcodegen;$(ProjectDir)\libs\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
@@ -68,7 +82,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>A:\Facultate\PP\Proiect\QR_Generator\libs\qrcodegen;A:\Facultate\PP\Proiect\QR_Generator\libs\stb;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\src\core;$(ProjectDir)\libs\qrcodegen;$(ProjectDir)\libs\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
@@ -84,20 +98,6 @@
       <TargetMachinePlatform>64</TargetMachinePlatform>
     </CudaCompile>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="Header.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="compare.cpp" />
-    <ClCompile Include="libs\qrcodegen\qrcodegen.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="openmp.cpp" />
-    <ClCompile Include="secvential.cpp" />
-    <ClCompile Include="stb_connection.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <CudaCompile Include="cuda.cu" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 12.8.targets" />

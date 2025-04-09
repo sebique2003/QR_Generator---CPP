@@ -1,4 +1,4 @@
-﻿#include "header.h"
+﻿#include "Header.h"
 #include "qrcodegen.hpp"
 #include "stb_image_write.h"
 #include <iostream>

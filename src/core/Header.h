@@ -9,9 +9,9 @@ using namespace std;
 #define BLOCK_SIZE 32	// dimensiunea blocului CUDA
 
 // functii pentru generarea codului QR
-void generate_qr_secvential(const string& text);
-void generate_qr_omp(const string& text);
-void generate_qr_cuda(const string& text);
-void comparaMetodele(const string& text);
+void generate_qr_secvential(const string& text, bool saveToFile);
+void generate_qr_omp(const string& text, bool saveToFile);
+void generate_qr_cuda(const string& text, bool saveToFile);
+void comparaMetodele(const string& text, bool saveToFile);
 
 #endif

@@ -34,7 +34,7 @@ __global__ void qr_to_image_kernel(const unsigned char* qr_modules, int qr_size,
     }
 }
 
-void generate_qr_cuda(const string& text) {
+void generate_qr_cuda(const string& text, bool saveToFile) {
     try {
         auto start = high_resolution_clock::now();
 
@@ -76,8 +76,10 @@ void generate_qr_cuda(const string& text) {
         cudaFree(d_image);
 
         // salvam imaginea in format PNG
-        if (!stbi_write_png("qr_cuda.png", img_size, img_size, 3, image.data(), img_size * 3)) {
-            cerr << "Eroare la salvarea imaginii PNG\n";
+        if (saveToFile) {
+            if (!stbi_write_png("qr_cuda.png", img_size, img_size, 3, image.data(), img_size * 3)) {
+                cerr << "Eroare la salvarea imaginii PNG\n";
+            }
         }
 
         auto stop = high_resolution_clock::now();

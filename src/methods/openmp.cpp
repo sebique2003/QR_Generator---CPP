@@ -10,7 +10,7 @@
 using namespace std;
 using namespace std::chrono;
 
-void generate_qr_omp(const string& text) {
+void generate_qr_omp(const string& text, bool saveToFile) {
     try {
         auto start = high_resolution_clock::now();
 
@@ -49,8 +49,10 @@ void generate_qr_omp(const string& text) {
         }
 
         // salvam imaginea in format PNG
-        if (!stbi_write_png("qr_omp.png", img_size, img_size, 3, image.data(), img_size * 3)) {
-            cerr << "Eroare la salvarea imaginii PNG\n";
+        if (saveToFile) {
+            if (!stbi_write_png("qr_omp.png", img_size, img_size, 3, image.data(), img_size * 3)) {
+                cerr << "Eroare la salvarea imaginii PNG\n";
+            }
         }
 
         auto stop = high_resolution_clock::now();

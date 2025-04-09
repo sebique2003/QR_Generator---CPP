@@ -72,24 +72,24 @@ int main() {
 
     switch (choice) {
     case 1:
-        generate_qr_secvential(input);
+        generate_qr_secvential(input, true);
         cout << "Fisierul 'qr_secvential.png' a fost salvat cu succes!\n";
         break;
     case 2:
-        generate_qr_omp(input);
+        generate_qr_omp(input, true);
         cout << "Fisierul 'qr_omp.png' a fost salvat cu succes!\n";
         break;
-    case 3:
-        generate_qr_cuda(input);
+    case 3: 
+        generate_qr_cuda(input, true);
         cout << "Fisierul 'qr_cuda.png' a fost salvat cu succes!\n";
         break;
     case 4:
         cout << "\nDoar se va compara timpul de executie al metodelor (nu se va genera un QR):\n";
-        comparaMetodele (input);
+        comparaMetodele (input, false);
         break;
     default:
         cout << "Optiune invalida! S-a folosit automat metoda secventiala.\n";
-        generate_qr_secvential(input);
+        generate_qr_secvential(input, true);
         cout << "Fisierul 'qr_secvential.png' a fost salvat cu succes!\n";
     }
 

@@ -9,7 +9,7 @@
 using namespace std;
 using namespace std::chrono;
 
-void generate_qr_secvential(const string& text) {
+void generate_qr_secvential(const string& text, bool saveToFile) {
     try {
 		// start timer
         auto start = high_resolution_clock::now();
@@ -37,8 +37,10 @@ void generate_qr_secvential(const string& text) {
         }
 
 		// salvam imaginea in format PNG
-        if (!stbi_write_png("qr_secvential.png", img_size, img_size, 3, image.data(), img_size * 3)) {
-            cerr << "Eroare la salvarea imaginii PNG\n";
+        if (saveToFile) {
+            if (!stbi_write_png("qr_secvential.png", img_size, img_size, 3, image.data(), img_size * 3)) {
+                cerr << "Eroare la salvarea imaginii PNG\n";
+            }
         }
 
 		// stop timer

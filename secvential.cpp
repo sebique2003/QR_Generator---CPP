@@ -19,7 +19,7 @@ void generate_qr_secvential(const string& text) {
 
 		const int size = qr.getSize(); // dimensiunea QR
 		const int img_size = size * SCALE; // dimensiunea imaginii finale
-		vector<unsigned char> image(img_size * img_size * 3, 255); // initializam imaginea cu alb
+		vector<unsigned char> image(img_size * img_size * 3, 255); // initializam imaginea cu albzz
 
 		// desenam fiecare modul QR in imagine
         for (int y = 0; y < size; y++) {

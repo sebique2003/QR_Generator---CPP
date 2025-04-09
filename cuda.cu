@@ -38,11 +38,11 @@ void generate_qr_cuda(const string& text) {
     try {
         auto start = high_resolution_clock::now();
 
-		// generam QR pe CPU
+        // generam QR pe CPU
         const qrcodegen::QrCode qr = qrcodegen::QrCode::encodeText(text.c_str(), qrcodegen::QrCode::Ecc::MEDIUM);
         const int size = qr.getSize();
         const int img_size = size * SCALE;
-        
+
         // date pt GPU
         vector<unsigned char> qr_modules(size * size);
         for (int y = 0; y < size; y++) {
@@ -51,21 +51,21 @@ void generate_qr_cuda(const string& text) {
             }
         }
 
-		// alocare memorie pe GPU
-        unsigned char *d_qr, *d_image;
+        // alocare memorie pe GPU
+        unsigned char* d_qr, * d_image;
         cudaMalloc(&d_qr, size * size);
         cudaMalloc(&d_image, img_size * img_size * 3);
-        
-		// transfer datele de la CPU la GPU
+
+        // transfer datele de la CPU la GPU
         cudaMemcpy(d_qr, qr_modules.data(), size * size, cudaMemcpyHostToDevice);
         cudaMemset(d_image, 255, img_size * img_size * 3);
 
-		// configurare dim grid si block
+        // configurare dim grid si block
         dim3 block(BLOCK_SIZE, BLOCK_SIZE);
         dim3 grid((size + block.x - 1) / block.x, (size + block.y - 1) / block.y);
-        
-		// lansam kernel-ul CUDA
-        qr_to_image_kernel<< <grid, block>>>(d_qr, size, d_image, img_size);
+
+        // lansam kernel-ul CUDA
+        qr_to_image_kernel << <grid, block >> > (d_qr, size, d_image, img_size);
         cudaDeviceSynchronize();
 
         // copy inapoi pe CPU
@@ -75,7 +75,7 @@ void generate_qr_cuda(const string& text) {
         cudaFree(d_qr);
         cudaFree(d_image);
 
-		// salvam imaginea in format PNG
+        // salvam imaginea in format PNG
         if (!stbi_write_png("qr_cuda.png", img_size, img_size, 3, image.data(), img_size * 3)) {
             cerr << "Eroare la salvarea imaginii PNG\n";
         }
@@ -83,7 +83,7 @@ void generate_qr_cuda(const string& text) {
         auto stop = high_resolution_clock::now();
         auto duration = duration_cast<milliseconds>(stop - start);
         cout << "Timp de executie (CUDA): " << fixed << setprecision(3)
-             << duration.count() / 1000.0 << " secunde." << endl;
+            << duration.count() / 1000.0 << " secunde." << endl;
     }
     catch (const exception& e) {
         cerr << "Eroare la generarea QR CUDA: " << e.what() << "\n";

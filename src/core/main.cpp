@@ -40,12 +40,16 @@ int main() {
     cout << "Alegeti cum doriti sa introduceti textul pentru QR:\n";
     cout << "1. Introduceti manual\n";
     cout << "2. Cititi din fisier ('largeText.txt')\n";
-    cout << "Alegeti optiunea (1-2): ";
+    cout << "\nAlegeti optiunea (1-2): ";
     cin >> input_choice;
     cin.ignore();
 
     if (input_choice == 1) {
-        cout << "Introduceti un text/link pentru codul QR: ";
+        cout << "\n=============================================================\n";
+        cout << "\tATENTIE! Codurile QR au o limita de dimensiune!\n";
+        cout << "Nu se accepta mai mult de aprox. 18672 biti (~2300 caractere)\n";
+        cout << "=============================================================\n";
+        cout << "\nIntroduceti un text/link pentru codul QR: ";
         getline(cin, input);
     }
     else if (input_choice == 2) {
@@ -67,7 +71,7 @@ int main() {
     cout << "2. OpenMP\n";
     cout << "3. CUDA\n";
     cout << "4. Compara metodele\n";
-    cout << "Alegeti optiunea (1-4): ";
+    cout << "\nAlegeti optiunea (1-4): ";
     cin >> choice;
 
     switch (choice) {

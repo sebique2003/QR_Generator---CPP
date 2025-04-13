@@ -49,7 +49,7 @@ int main() {
         getline(cin, input);
     }
     else if (input_choice == 2) {
-        input = read_file("A:\\Facultate\\PP\\test\\largeText.txt");
+        input = read_file("A:\\Facultate\\PP\\Proiect\\QR_Generator\\testFolder\\largeText.txt");
         if (input.empty()) {
             cerr << "Fisierul este gol sau nu s-a putut citi. Se va folosi un text implicit.\n";
             input = "Text implicit pentru generarea QR.";

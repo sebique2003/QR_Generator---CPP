@@ -60,14 +60,14 @@ for (int y = 0; y < size; y++) {
 
 | Metodă         | Timp de execuție |
 | -------------  | ---------------- |
-| **Secvențial** | 2.008 secunde    |
-| **OpenMP**     | 1.991 secunde    |
-| **CUDA**       | 2.107 secunde    |
+| **Secvențial** | 1.396 secunde.   |
+| **OpenMP**     | 1.311 secunde.   |
+| **CUDA**       | 1.382 secunde.   |
 
 ### Observații:
-- **Secvențial**: Timpul de execuție este de aproximativ 2 secunde.
-- **OpenMP**: Timpul de execuție este de aproximativ 1.99 secunde, ceea ce arată o ușoară îmbunătățire față de varianta secvențială. Deși nu este o diferență mare, OpenMP permite procesarea paralelă pe CPU.
-- **CUDA**: Timpul de execuție este de aproximativ 2.1 secunde, ceea ce este similar cu varianta secvențială. Deși CUDA oferă avantaje mari la dimensiuni mari de date, overhead-ul inițial al transferului datelor între CPU și GPU poate afecta performanța pentru dimensiuni mai mici ale QR-urilor.
+- **Secvențial**: Timpul de execuție este de aproximativ 1.4 secunde.
+- **OpenMP**: Timpul de execuție este de aproximativ 1.3 secunde, ceea ce arată o ușoară îmbunătățire față de varianta secvențială. Deși nu este o diferență mare, OpenMP permite procesarea paralelă pe CPU.
+- **CUDA**: Timpul de execuție este de aproximativ 1.38 secunde, ceea ce este similar cu varianta secvențială. Deși CUDA oferă avantaje mari la dimensiuni mari de date, overhead-ul inițial al transferului datelor între CPU și GPU poate afecta performanța pentru dimensiuni mai mici ale QR-urilor.
 
 ### Concluzie:
 - **OpenMP** este cel mai eficient pentru dimensiuni mici ale QR-urilor, cu timpi de execuție apropiati de varianta secvențială, dar cu o paralelizare eficientă pe CPU.
